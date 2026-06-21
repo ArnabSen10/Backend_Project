@@ -1,0 +1,7 @@
+//it contains the list of name of those files in which prettier should not be implemented
+ 
+/.vscode                   //vs code settings
+/.node_modules 
+*.env
+.env
+.env.*
