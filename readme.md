@@ -7,3 +7,31 @@ nodemon - whenever a file is saved it restarts te server automatically
 dev dependancy means while development we are using it and not in the production
 
 prettier extension and also its settings are used as in one code many developers works so when the code is merged there conflict arises in syntax spacing like these, so that all emains on the same shore we use prettier
+"singleQuote": false,
+"bracketSpacing": true,
+
+Database Connection
+//atlas is a sub-service of mongodb that allows user to have databases online
+//in ip address mostly access is given to the ip address of that particular system where all the backend code is ther, but for practice we give 0.0.0.0/0 i.e. allow from all devices
+
+there are two ways to connect to database
+first is always we will run the code with index.js, so we keep all the the codes in index.js and when the code loads the function where the database copnnection code is written it gets executed instantly
+
+secondly, we can create a db folder conssiting of the databse connection code and then we import it in index.js file and execute, it is much cleaner, modular, and effective also
+for db connection we use mongoose, and while doing database connection there may occur problem so always wrap it in try and catch block
+and also it takes time to talk with the database so we also have to use async
+
+<!-- import mongoose from "mongoose";
+import { DB_NAME } from "./constants";
+
+//writing iife function
+
+(async () => {
+    try{
+        await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+    }
+    catch (error){
+        console.error("ERROR: ", error);
+        throw error
+    }
+}) () -->
