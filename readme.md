@@ -35,3 +35,16 @@ import { DB_NAME } from "./constants";
         throw error
     }
 }) () -->
+
+we also need to load the env file before starting the app so make changes in the script of package.json file so that all the env variables is available
+
+//we use app.use >>wheneever we want to do configuration or middleware settings like cors
+
+Middlewares
+suppose there is a request /instagram then we have been doing the response will look like res.send("Arnab") i.e. when request comes we serve them with response but we want to process something in between like wheather the user is loggedin or not this checking is called middleware.
+(err, req, res, next)  next is a flag that marks wheather the current middleware has completed it's checking or not.
+
+
+
+error handling is done in node js by extending the Error class in utils/apiError.js
+similarly to handle the response we need express framework
