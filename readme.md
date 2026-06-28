@@ -48,3 +48,10 @@ suppose there is a request /instagram then we have been doing the response will 
 
 error handling is done in node js by extending the Error class in utils/apiError.js
 similarly to handle the response we need express framework
+
+we download the package npm i mongoose-aggregate-paginate-v2 so that we can write aggregation code, complex mongoDB queries
+
+bcrypt library helps us to hash our password (used in user.model.js)
+
+jwt has three parts header, payload(data), verify signature, it  makes all the tokens unique.
+JWT is a bearer token. Whosoever has the jwt token i will send them data
