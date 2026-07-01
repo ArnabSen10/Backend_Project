@@ -3,7 +3,7 @@ class apiError extends Error{ //this "Error" is a class of node, we are overwrit
         statusCode,
         messsage= "Something Went Wrong!!!",
         errors=[],
-        statck=""
+        stack=""
     ){
         super(message) //overwriting the message
         this.statusCode=statusCode; //overwriting ther value of Error class
@@ -13,8 +13,8 @@ class apiError extends Error{ //this "Error" is a class of node, we are overwrit
         this.errors=errors
 
         //this stack trace is to properly identify where the error is in which files
-        if(statck){
-            this.stack=statck
+        if(stack){
+            this.stack=stack
         }
         else{
             Error.captureStackTrace(this, this.constructor)

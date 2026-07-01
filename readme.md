@@ -41,6 +41,7 @@ we also need to load the env file before starting the app so make changes in the
 //we use app.use >>wheneever we want to do configuration or middleware settings like cors
 
 Middlewares
+(It's like a person telling the other "before going somewhere, meet me")
 suppose there is a request /instagram then we have been doing the response will look like res.send("Arnab") i.e. when request comes we serve them with response but we want to process something in between like wheather the user is loggedin or not this checking is called middleware.
 (err, req, res, next)  next is a flag that marks wheather the current middleware has completed it's checking or not.
 
@@ -55,3 +56,10 @@ bcrypt library helps us to hash our password (used in user.model.js)
 
 jwt has three parts header, payload(data), verify signature, it  makes all the tokens unique.
 JWT is a bearer token. Whosoever has the jwt token i will send them data
+
+File Upload
+File uploading is handled by backend, and file handling is done in own's server it is done in 3rd party services like AWS. It depends ypon how much big file is handled, rate of using the services.
+Not at all api endpoints the file will come for eg in login, file will not come but during user registration, file may come. We keep it in util so that it remainbs standalone and can be reused.
+//We will upload the files in Cloudinary (it is a service)
+//two packages are required one is multer
+with the help of multer we will take the file from user and store in our local server temporarily, and in next step we will take the file from local storage and put it in coludinary's server. The reason behind storing the file in local server temporarily so that we can attempt re uploading if any such cases occurs. 
