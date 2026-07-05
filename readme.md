@@ -63,3 +63,41 @@ Not at all api endpoints the file will come for eg in login, file will not come 
 //We will upload the files in Cloudinary (it is a service)
 //two packages are required one is multer
 with the help of multer we will take the file from user and store in our local server temporarily, and in next step we will take the file from local storage and put it in coludinary's server. The reason behind storing the file in local server temporarily so that we can attempt re uploading if any such cases occurs. 
+
+HTTP
+the difference between http and HTTPs is in the protocol, in HTTP we send the raw data but in https we encrypt ie add a layer in the data before sending 
+
+What are HTTP headers?
+metadata>> key-value sent along request and response
+headers helps in caching, authentication, manage state(state of the user guest or logged in)
+request headers >> from client
+response headers >> from server
+representation headers >> encoding/ compression
+payload headers >> data (eg: id: , email: )
+
+Most common headers>> 
+>> accept : application/json (it tells which data format to accept)
+>>User-Agent : from which application the requst came from (postman or any browser)
+eg thatswhy when we open a website in browser they detect using the header and suggest us to download their apps
+>>Authorizarion : Bearer 
+>>Content-Type : what we are sending image or pdf or etc
+>>Cookie : for how many time we will keep the user active, etc
+>>Cache-Control : when to expire the data
+
+CORS Headers and security headers are set by the company internal policies from where request can come, which methods are allowed get, post like that
+
+HTTP Methods>> the operations we are performing
+>> GET : retreive a resource
+>> HEAD : No message body (response headers only)
+>> OPTIONS : what operations are available at a endpoint
+>> TRACE : loopback test (get same data)
+>> DELETE : remove a resource
+>> PUT : replace a resource
+>> PATCH : change part of a resource
+>> POST : interact a resource (add a resource)
+
+>> read about HTTP STATUS CODE
+
+
+//now we will start writitng the controller, starting with "registering the user"
+methods should when some url is hit, so we need to write the routes 
