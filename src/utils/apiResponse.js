@@ -7,6 +7,8 @@ class apiResponse{
     }
 }
 
+export { apiResponse }
+
 //server has status codes and it tells wheather a specific http request is successfully completed 
 // Informational responses (100 – 199)
 // Successful responses (200 – 299)

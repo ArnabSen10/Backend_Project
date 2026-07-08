@@ -64,7 +64,7 @@ userSchema.pre("save", async function(next) {
     if(!this.isModified("password")) 
         return next();
     
-    this.password = bcrypt.hash(this.password, 10) //10 is rounds or salt
+    this.password = await bcrypt.hash(this.password, 10) //10 is rounds or salt
     next()
 })
 // we don;'t use arrow function here because if we use arrow function then we will not get the referrence (this)

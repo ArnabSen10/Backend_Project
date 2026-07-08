@@ -101,3 +101,16 @@ HTTP Methods>> the operations we are performing
 
 //now we will start writitng the controller, starting with "registering the user"
 methods should when some url is hit, so we need to write the routes 
+
+
+breaking the problem of registering user in steps :-
+
+    get user details from frontend
+    validation - not empty
+    check if user already exists: username, email
+    check for images, check for avatar
+    upload them to cloudinary, avatar
+    create user object - create entry in db
+    remove password and refresh token field from response
+    check for user creation
+    return res
