@@ -114,3 +114,5 @@ breaking the problem of registering user in steps :-
     remove password and refresh token field from response
     check for user creation
     return res
+
+When we send normal data through postman we can use raw data option i.e. in json format but if we want to send files through postman we have to use form-data

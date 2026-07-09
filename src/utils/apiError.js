@@ -1,7 +1,7 @@
-class apiError extends Error{ //this "Error" is a class of node, we are overwrititng it
+class ApiError extends Error{ //this "Error" is a class of node, we are overwrititng it
     constructor(
         statusCode,
-        messsage= "Something Went Wrong!!!",
+        message= "Something Went Wrong!!!",
         errors=[],
         stack=""
     ){
@@ -22,4 +22,4 @@ class apiError extends Error{ //this "Error" is a class of node, we are overwrit
     }
 }
 
-export {apiError}
+export {ApiError}

@@ -1,4 +1,4 @@
-class apiResponse{
+class ApiResponse{
     constructor(statusCode, data, message="Success"){
         this.statusCode= statusCode
         this.data = data
@@ -7,7 +7,7 @@ class apiResponse{
     }
 }
 
-export { apiResponse }
+export { ApiResponse }
 
 //server has status codes and it tells wheather a specific http request is successfully completed 
 // Informational responses (100 – 199)

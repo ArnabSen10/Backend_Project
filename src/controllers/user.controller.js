@@ -5,6 +5,7 @@ import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 
+
 const registerUser = asyncHandler(async (req, res) => {
     // res.status(200).json({ //also adding a json response
     //     message: "ok"
@@ -20,8 +21,10 @@ const registerUser = asyncHandler(async (req, res) => {
     // remove password and refresh token field from response
     // check for user creation
     // return res
+    // console.log("Body:", req.body);
+    // console.log("Files:", req.files);
 
-
+//extracted all the datapoints from req.body
     const {fullName, email, username, password } = req.body
     console.log("email: ", email);
 
@@ -40,11 +43,11 @@ const registerUser = asyncHandler(async (req, res) => {
     if (existedUser) {
         throw new ApiError(409, "User with email or username already exists")
     }
-    //console.log(req.files);
+    // console.log(req.files);
 
     const avatarLocalPath = req.files?.avatar[0]?.path;
     // ? mark means optional may be we have the file or not
-    //const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
     let coverImageLocalPath;
     if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
@@ -63,7 +66,7 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Avatar file is required")
     }
    
-
+//after all tehe values are entered correctly create a user and push it into the db
     const user = await User.create({
         fullName,
         avatar: avatar.url,
@@ -75,7 +78,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 //to check if the user is created or not
     const createdUser = await User.findById(user._id).select(
-        "-password -refreshToken"
+        "-password -refreshToken" //these data will not be shown in res in postman
     )
     if (!createdUser) {
         throw new ApiError(500, "Something went wrong while registering the user")

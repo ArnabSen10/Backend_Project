@@ -19,7 +19,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
-            lowecase: true,
+            lowercase: true,
             trim: true, 
         },
         fullName: {
@@ -59,13 +59,12 @@ const userSchema = new Schema(
 // for eg in "pre" just before the data gets saved we can use the pre hook and execute as per our wish like authenticating a user before saving the dat in the database
 //encrypting the password
 
-userSchema.pre("save", async function(next) {
+userSchema.pre("save", async function() {
     //if we dont write this check condition then for every click on save like if we change the avatar then also the password will be changed, so the below check condition is neccesary
     if(!this.isModified("password")) 
-        return next();
+        return;
     
     this.password = await bcrypt.hash(this.password, 10) //10 is rounds or salt
-    next()
 })
 // we don;'t use arrow function here because if we use arrow function then we will not get the referrence (this)
 
@@ -84,7 +83,7 @@ userSchema.methods.generateAccessToken = function(){
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }
@@ -96,7 +95,7 @@ userSchema.methods.generateRefreshToken = function(){
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn: REFRESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }

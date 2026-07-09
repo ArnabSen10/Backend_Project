@@ -3,6 +3,12 @@ import { v2 as cloudinary} from "cloudinary";
 import fs from "fs" 
 //fs is file system library it comes with node; this libraray helps to read write remove a file.
 
+cloudinary.config({ 
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
+  api_key: process.env.CLOUDINARY_API_KEY, 
+  api_secret: process.env.CLOUDINARY_API_SECRET 
+});
+
 const uploadOnCloudinary = async (localFilePath) => {
     try {
         //if no file is uploaded in local server
@@ -12,8 +18,8 @@ const uploadOnCloudinary = async (localFilePath) => {
             resource_type: "auto" //image or video or pdf 
         })
         // file has been uploaded successfully
-        console.log("file is uploaded on cloudinary ", response.url);
-        // fs.unlinkSync(localFilePath)
+        // console.log("file is uploaded on cloudinary ", response.url);
+        fs.unlinkSync(localFilePath)
         return response;
 
     } catch (error) {
