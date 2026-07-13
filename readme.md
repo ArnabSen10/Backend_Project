@@ -116,3 +116,5 @@ breaking the problem of registering user in steps :-
     return res
 
 When we send normal data through postman we can use raw data option i.e. in json format but if we want to send files through postman we have to use form-data
+
+Access token are usually of shorter length and refresh token are long lived (it is expired in long term). When we want to upload anything the user needs to login so the user should have access token. Suppose if the login session is expireed within 15 mins then again the user needs to enter the password to login. Here comes the refresh token, we save ther efresh token in the db and also give it to the user, we validate the user through access token but everytime the user dont need to enter the password, if you the user has the refresh token then thewy need to hit a endpoint from ther if the refresh token of the user matches the refresh token of the database, then give the user new access token. This prevents the user from logging in again and again.
